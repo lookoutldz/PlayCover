@@ -42,6 +42,9 @@ struct AppSettingsData: Codable {
     var noKMOnInput = true
     var enableScrollWheel = true
 
+    var maaTools = false
+    var maaToolsPort = 1717
+
     init() {}
 
     // handle old 2.x settings where PlayChain did not exist yet
@@ -70,7 +73,9 @@ struct AppSettingsData: Codable {
         injectIntrospection = try container.decodeIfPresent(Bool.self, forKey: .injectIntrospection) ?? false
         rootWorkDir = try container.decodeIfPresent(Bool.self, forKey: .rootWorkDir) ?? true
         noKMOnInput = try container.decodeIfPresent(Bool.self, forKey: .noKMOnInput) ?? true
-        enableScrollWheel = try container.decodeIfPresent(Bool.self, forKey: .enableScrollWheel) ?? true
+
+        maaTools = try container.decodeIfPresent(Bool.self, forKey: .maaTools) ?? false
+        maaToolsPort = try container.decodeIfPresent(Int.self, forKey: .maaToolsPort) ?? 1717
     }
 }
 
